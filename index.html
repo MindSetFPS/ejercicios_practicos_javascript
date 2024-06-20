@@ -28,22 +28,24 @@
     <div>
         <h1>Factorial de un numero</h1>
         <p id="r-4"></p>
-        <button id="b-4"></button>
+        <input type="number" name="i-4" id="i-4">
+        <button id="b-4" onclick="factorial()">Calcular</button>
     </div>
     <div>
         <h1>Contar vocales</h1>
         <p id="r-5"></p>
-        <button id="b-5"></button>
+        <input type="text" name="i-5" id="i-5">
+        <button id="b-5" onclick="contarVocales()">Contar</button>
     </div>
     <div>
         <h1>Sumar los numeros de un arreglo</h1>
         <p id="r-6"></p>
-        <button id="b-6"></button>
+        <button id="b-6" onclick="sumarNumerosArreglo()">Sumar</button>
     </div>
     <div>
         <h1>Buscar el maximo de un arreglo</h1>
         <p id="r-7"></p>
-        <button id="b-7"></button>
+        <button id="b-7" onclick="buscarMax()">Buscar</button>
     </div>
 </body>
 <script>
@@ -76,13 +78,13 @@
 
         return true;
     }
-  
-    function numeroPrimo(){
+
+    function numeroPrimo() {
         var res = document.getElementById("r-2")
         res.textContent = calcNumPrimo()
     }
-    
-    function eliminarDuplicados(){
+
+    function eliminarDuplicados() {
         const array = [1, 2, 2, 3, 4, 4, 5];
         var p = document.getElementById("r-3")
         p.textContent = array
@@ -91,6 +93,60 @@
         p.textContent = p.textContent + uniqueArray
     }
 
+
+    function factorial() {
+        var n = document.getElementById("i-4").value
+        let result = 1;
+        for (let i = 2; i <= n; i++) {
+            result *= i;
+        }
+        var p = document.getElementById("r-4")
+        p.textContent = result
+        console.log(result);
+    }
+
+
+    function contarVocales() {
+        var str = document.getElementById("i-5").value
+        let vowelCount = 0;
+        const vowels = 'aeiouAEIOU';
+
+        for (let i = 0; i < str.length; i++) {
+            if (vowels.includes(str[i])) {
+                vowelCount++;
+            }
+        }
+
+        let p = document.getElementById("r-5")
+        p.textContent = vowelCount
+        return vowelCount;
+    }
+
+
+    function sumarNumerosArreglo(){
+        // Descripción: Escribe una función que sume todos los números de un arreglo.
+        
+        var myarray = [ 2, 5, 5, 9, 24, 51, 3, 0, 11, 5]
+
+        var p = document.getElementById("r-6")
+        p.textContent = myarray
+        
+        var sum = 0
+        myarray.forEach( num => {
+            sum = sum + num
+        })
+        
+        p.textContent = p.textContent + " La suma es: " + sum
+    }
+
+    function buscarMax(){
+        const arr = [3, 5, 2, 8, 4];
+        var p = document.getElementById("r-7")
+        p.textContent = arr
+        let max = Math.max(...arr);
+        console.log(max)
+        p.textContent = p.textContent + "\n el numero mayor es : " + max
+    }
 </script>
 
 </html>
